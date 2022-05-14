@@ -3,6 +3,9 @@ import {Character} from "../../models/character.model";
 import {HttpServiceService} from "../../services/http-service.service";
 import {IdService} from "../../services/id.service";
 
+/**
+ * Character list page with paging.
+ */
 @Component({
   selector: 'app-characters',
   templateUrl: './characters.component.html',
@@ -24,17 +27,26 @@ export class CharactersComponent implements OnInit {
     this.loadCharacters();
   }
 
+  /**
+   * Load characters from API via WebService.
+   */
   loadCharacters(){
     this.WebService.getCharacters(this.page, this.pageSize).subscribe((characters: Character[]) => {
       this.characters = characters;
     })
   }
 
+  /**
+   * Go to next page.
+   */
   nextPage(){
     this.page++;
     this.loadCharacters();
   }
 
+  /**
+   * Go to previous page.
+   */
   prevPage(){
     this.page--;
     this.loadCharacters();

@@ -3,6 +3,9 @@ import {HttpServiceService} from "../../services/http-service.service";
 import {House} from "../../models/house.model";
 import {IdService} from "../../services/id.service";
 
+/**
+ * House list page with paging.
+ */
 @Component({
   selector: 'app-houses',
   templateUrl: './houses.component.html',
@@ -23,17 +26,26 @@ export class HousesComponent implements OnInit {
     this.loadHouses();
   }
 
+  /**
+   * Load houses from API via WebService.
+   */
   loadHouses(){
     this.webService.getHouses(this.page, this.pageSize).subscribe((houses: House[]) => {
       this.houses = houses;
     })
   }
 
+  /**
+   * Go to next page.
+   */
   nextPage(){
     this.page++;
     this.loadHouses();
   }
 
+  /**
+   * Go to previous page.
+   */
   prevPage(){
     this.page--;
     this.loadHouses();

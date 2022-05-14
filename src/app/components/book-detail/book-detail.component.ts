@@ -5,6 +5,9 @@ import {ActivatedRoute, Params} from "@angular/router";
 import {HttpServiceService} from "../../services/http-service.service";
 import {IdService} from "../../services/id.service";
 
+/**
+ * Book details page.
+ */
 @Component({
   selector: 'app-book-detail',
   templateUrl: './book-detail.component.html',
@@ -22,18 +25,37 @@ export class BookDetailComponent implements OnInit {
     public idService: IdService
   ) { }
 
+  /**
+   * - set url from route param via idService
+   * - reset values
+   * - get values from API via WebService
+   */
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
       this.url = this.idService.getBookUrl(params["id"]);
-      this.WebService.getDetailsFromUrl(this.url).subscribe((book: Book) => { this.book = book;
-        this.characters = [];
-        this.povCharacters = [];
-        this.book.characters.forEach(character => {
-          this.WebService.getDetailsFromUrl(character).subscribe((character: Character) => { this.characters.push(character) });
-        });
-        this.book.povCharacters.forEach(character => {
-          this.WebService.getDetailsFromUrl(character).subscribe((character: Character) => { this.povCharacters.push(character) });
-        });
+      this.resetValues();
+      this.getValues();
+    });
+  }
+
+  /**
+   * Reset values.
+   */
+  resetValues(){
+    this.characters = [];
+    this.povCharacters = [];
+  }
+
+  /**
+   * Load values from API via WebService.
+   */
+  getValues(){
+    this.WebService.getDetailsFromUrl(this.url).subscribe((book: Book) => { this.book = book;
+      this.book.characters.forEach(character => {
+        this.WebService.getDetailsFromUrl(character).subscribe((character: Character) => { this.characters.push(character) });
+      });
+      this.book.povCharacters.forEach(character => {
+        this.WebService.getDetailsFromUrl(character).subscribe((character: Character) => { this.povCharacters.push(character) });
       });
     });
   }

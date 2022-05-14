@@ -4,6 +4,9 @@ import {Observable} from "rxjs";
 import {map, filter} from 'rxjs/operators';
 import * as _ from "lodash";
 
+/**
+ * Root page with color and navbar.
+ */
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -16,6 +19,9 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   constructor(private router: Router, private elementRef: ElementRef) { }
 
+  /**
+   * Set page subtitle.
+   */
   ngOnInit() {
     this.currentPageTitle = this.router.events.pipe(
       filter(e => e instanceof NavigationEnd),
@@ -23,6 +29,9 @@ export class AppComponent implements OnInit, AfterViewInit {
     ) as Observable<string>
   }
 
+  /**
+   * Set background color.
+   */
   ngAfterViewInit() {
     this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = 'WhiteSmoke';
   }

@@ -1,3 +1,6 @@
+/**
+ * Model for houses.
+ */
 export interface House {
   url:	string;
   name:	string;
