@@ -1,0 +1,70 @@
+<div class="list-group" *ngIf="character">
+  <a class="list-group-item list-group-item-action">
+    <p *ngIf="character.name == ''">
+      Name: "anonym"
+    </p>
+    <p *ngIf="character.name != ''">
+      Name: {{ character.name }}
+    </p>
+  </a>
+  <a class="list-group-item list-group-item-action">
+    Gender: {{ character.gender }}
+  </a>
+  <a class="list-group-item list-group-item-action">
+    Culture: {{ character.culture }}
+  </a>
+  <a class="list-group-item list-group-item-action">
+    Born: {{ character.born }}
+  </a>
+  <a class="list-group-item list-group-item-action">
+    Died: {{ character.died }}
+  </a>
+  <a class="list-group-item list-group-item-action">
+    Titles: {{ character.titles }}
+  </a>
+  <a class="list-group-item list-group-item-action">
+    Aliases: {{ character.aliases }}
+  </a>
+  <a class="list-group-item list-group-item-action">
+    Father:
+    <a *ngIf="father" [routerLink]="['/character/' + idService.getCharacterId(character.father)]" class="btn btn-outline-secondary">
+      {{ father.name }}
+    </a>
+  </a>
+  <a class="list-group-item list-group-item-action">
+   Mother:
+    <a *ngIf="mother" [routerLink]="['/character/' + idService.getCharacterId(character.mother)]" class="btn btn-outline-secondary">
+      {{ mother.name }}
+    </a>
+  </a>
+  <a class="list-group-item list-group-item-action">
+    Spouse:
+    <a *ngIf="spouse" [routerLink]="['/character/' + idService.getCharacterId(character.spouse)]" class="btn btn-outline-secondary">
+      {{ spouse.name }}
+    </a>
+  </a>
+  <a class="list-group-item list-group-item-action">
+    Allegiances:
+    <a *ngFor="let house of allegiances" [routerLink]="['/house/' + idService.getHouseId(house.url)]" class="btn btn-outline-secondary">
+      {{ house.name }}
+    </a>
+  </a>
+  <a class="list-group-item list-group-item-action ">
+    Books:
+    <a *ngFor="let book of books" [routerLink]="['/book/' + idService.getBookId(book.url)]" class="btn btn-outline-secondary">
+      {{ book.name }}
+    </a>
+  </a>
+  <a class="list-group-item list-group-item-action ">
+    POV books:
+    <a *ngFor="let book of povBooks" [routerLink]="['/book/' + idService.getBookId(book.url)]" class="btn btn-outline-secondary">
+      {{ book.name }}
+    </a>
+  </a>
+  <a class="list-group-item list-group-item-action">
+    TV series: {{ character.tvSeries }}
+  </a>
+  <a class="list-group-item list-group-item-action">
+    Played by: {{ character.playedBy }}
+  </a>
+</div>

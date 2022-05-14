@@ -1,0 +1,70 @@
+<div class="list-group" *ngIf="house">
+  <a class="list-group-item list-group-item-action">
+    Name: {{ house.name }}
+  </a>
+  <a class="list-group-item list-group-item-action">
+    Region: {{ house.region }}
+  </a>
+  <a class="list-group-item list-group-item-action">
+    Coat of arms: {{ house.coatOfArms }}
+  </a>
+  <a class="list-group-item list-group-item-action">
+    Words: {{ house.words }}
+  </a>
+  <a class="list-group-item list-group-item-action">
+    Titles: {{ house.titles }}
+  </a>
+  <a class="list-group-item list-group-item-action">
+    Seats: {{ house.seats }}
+  </a>
+  <a class="list-group-item list-group-item-action">
+    Current lord:
+    <a *ngIf="currentLord" [routerLink]="['/character/' + idService.getCharacterId(house.currentLord)]" class="btn btn-outline-secondary">
+      {{ currentLord.name }}
+    </a>
+  </a>
+  <a class="list-group-item list-group-item-action">
+    Heir:
+    <a *ngIf="heir" [routerLink]="['/character/' + idService.getCharacterId(house.heir)]" class="btn btn-outline-secondary">
+      {{ heir.name }}
+    </a>
+  </a>
+  <a class="list-group-item list-group-item-action">
+    Overlord:
+    <a *ngIf="overlord" [routerLink]="['/house/' + idService.getHouseId(house.overlord)]" class="btn btn-outline-secondary">
+      {{ overlord.name }}
+    </a>
+  </a>
+  <a class="list-group-item list-group-item-action">
+    Founded: {{ house.founded }}
+  </a>
+  <a class="list-group-item list-group-item-action">
+    Founder:
+    <a *ngIf="founder" [routerLink]="['/character/' + idService.getCharacterId(house.founder)]" class="btn btn-outline-secondary">
+      {{ founder.name }}
+    </a>
+  </a>
+  <a class="list-group-item list-group-item-action">
+    Died out: {{ house.diedOut }}
+  </a>
+  <a class="list-group-item list-group-item-action">
+    Ancestral weapons: {{ house.ancestralWeapons }}
+  </a>
+  <a class="list-group-item list-group-item-action">
+    Cadet branches:
+    <a *ngFor="let branch of cadetBranches" [routerLink]="['/house/' + idService.getHouseId(branch.url)]" class="btn btn-outline-secondary">
+      {{ branch.name }}
+    </a>
+  </a>
+  <a class="list-group-item list-group-item-action ">
+    Sworn members:
+    <a *ngFor="let member of swornMembers" [routerLink]="['/character/' + idService.getCharacterId(member.url)]" class="btn btn-outline-secondary">
+      <p *ngIf="member.name == ''">
+        "anonym"
+      </p>
+      <p *ngIf="member.name != ''">
+        {{ member.name }}
+      </p>
+    </a>
+  </a>
+</div>

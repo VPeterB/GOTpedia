@@ -1,0 +1,26 @@
+<div class="card-deck" *ngFor="let house of houses" [ngStyle]="{ display: 'inline-block', margin: '2em' }">
+  <div class="card" style="width: 75rem;">
+    <div class="card-body">
+      <h5 class="card-title">{{ house.name }}</h5>
+      <h5 *ngIf="house.name == ''" class="card-title">anonym</h5>
+      <p class="card-text">
+        {{ house.coatOfArms }}
+      </p>
+      <p class="card-text">
+        Region: {{ house.region }}
+      </p>
+      <a [routerLink]="['/house/' + idService.getHouseId(house.url)]" class="btn btn-outline-secondary">Details</a>
+    </div>
+  </div>
+</div>
+<div [ngStyle]="{ display: 'flex', justifyContent: 'space-between' }">
+  <button class="btn btn-dark" (click)="prevPage()" [ngStyle]="{ margin: '1em' }" [disabled]="page === 1">
+    &laquo; {{ page-1 }} Previous
+  </button>
+  <button class="btn btn-dark" [ngStyle]="{ margin: '1em' }" [disabled]="page >= 0">
+    Page: {{ page }} / {{lastPage}}
+  </button>
+  <button class="btn btn-dark" (click)="nextPage()" [ngStyle]="{ margin: '1em' }" [disabled]="page === lastPage">
+    Next {{ page+1 }} &raquo;
+  </button>
+</div>

@@ -1,0 +1,29 @@
+<div class="card-deck" *ngFor="let character of characters" [ngStyle]="{ display: 'inline-block', margin: '2em' }">
+  <div class="card" style="width: 20rem;">
+    <div class="card-body">
+      <h5 *ngIf="character.name != ''" class="card-title">{{ character.name }}</h5>
+      <h5 *ngIf="character.name == ''" class="card-title">"anonym"</h5>
+      <p class="card-text">
+        Gender: {{ character.gender }}
+      </p>
+      <p *ngIf="character.culture != ''" class="card-text">
+        Culture: {{ character.culture }}
+      </p>
+      <p *ngIf="character.culture == ''" class="card-text">
+        Culture: unknown
+      </p>
+      <a [routerLink]="['/character/' + idService.getCharacterId(character.url)]" class="btn btn-outline-secondary">Details</a>
+    </div>
+  </div>
+</div>
+<div [ngStyle]="{ display: 'flex', justifyContent: 'space-between' }">
+  <button class="btn btn-dark" (click)="prevPage()" [ngStyle]="{ margin: '1em' }" [disabled]="page === 1">
+    &laquo; {{ page-1 }} Previous
+  </button>
+  <button class="btn btn-dark" [ngStyle]="{ margin: '1em' }" [disabled]="page >= 0">
+    Page: {{ page }} / {{lastPage}}
+  </button>
+  <button class="btn btn-dark" (click)="nextPage()" [ngStyle]="{ margin: '1em' }" [disabled]="page === lastPage">
+    Next {{ page+1 }} &raquo;
+  </button>
+</div>

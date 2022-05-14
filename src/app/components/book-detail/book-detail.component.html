@@ -1,0 +1,43 @@
+<div class="list-group" *ngIf="book">
+  <a class="list-group-item list-group-item-action">
+    Name: {{ book.name }}
+  </a>
+  <a class="list-group-item list-group-item-action">
+    ISBN: {{ book.isbn }}
+  </a>
+  <a class="list-group-item list-group-item-action">
+    Authors: {{ book.authors }}
+  </a>
+  <a class="list-group-item list-group-item-action">
+    Number of pages: {{ book.numberOfPages }}
+  </a>
+  <a class="list-group-item list-group-item-action">
+    Publisher: {{ book.publiser }}
+  </a>
+  <a class="list-group-item list-group-item-action">
+    Country: {{ book.country }}
+  </a>
+  <a class="list-group-item list-group-item-action">
+    Media type: {{ book.mediaType }}
+  </a>
+  <a class="list-group-item list-group-item-action">
+    Released: {{ book.released | date:'mediumDate' }}
+  </a>
+  <a class="list-group-item list-group-item-action">
+    Characters:
+    <a *ngFor="let character of characters" [routerLink]="['/character/' + idService.getCharacterId(character.url)]" class="btn btn-outline-secondary">
+      <p *ngIf="character.name == ''">
+        "anonym"
+      </p>
+      <p *ngIf="character.name != ''">
+        {{ character.name }}
+      </p>
+    </a>
+  </a>
+  <a class="list-group-item list-group-item-action ">
+    POV characters:
+    <a *ngFor="let character of povCharacters" [routerLink]="['/character/' + idService.getCharacterId(character.url)]" class="btn btn-outline-secondary">
+      {{ character.name }}
+    </a>
+  </a>
+</div>
