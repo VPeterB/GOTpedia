@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Character} from "../../models/character.model";
 import {House} from "../../models/house.model";
 import {Book} from "../../models/book.model";
@@ -29,25 +29,25 @@ export class CharacterDetailComponent implements OnInit {
 
   ngOnInit(){
     this.route.params.subscribe((params: Params) => {
+      this.father = undefined;
+      this.mother = undefined;
+      this.spouse = undefined;
       this.url = this.idService.getCharacterUrl(params["id"]);
-      this.WebService.getDetailsFromUrl(this.url).subscribe((character: any) => { this.character = character;
-        this.father = undefined;
-        this.mother = undefined;
-        this.spouse = undefined;
-        if(this.character.father) this.WebService.getDetailsFromUrl(this.character.father).subscribe((character: any) => { if(character) this.father = character });
-        if(this.character.mother) this.WebService.getDetailsFromUrl(this.character.mother).subscribe((character: any) => { if(character) this.mother = character });
-        if(this.character.spouse) this.WebService.getDetailsFromUrl(this.character.spouse).subscribe((character: any) => { if(character) this.spouse = character });
+      this.WebService.getDetailsFromUrl(this.url).subscribe((character: Character) => { this.character = character;
+        if(this.character.father) this.WebService.getDetailsFromUrl(this.character.father).subscribe((character: Character) => { this.father = character });
+        if(this.character.mother) this.WebService.getDetailsFromUrl(this.character.mother).subscribe((character: Character) => { this.mother = character });
+        if(this.character.spouse) this.WebService.getDetailsFromUrl(this.character.spouse).subscribe((character: Character) => { this.spouse = character });
         this.allegiances = [];
         this.books = [];
         this.povBooks = [];
         this.character.allegiances.forEach(house => {
-          this.WebService.getDetailsFromUrl(house).subscribe((house: any) => { if(house) this.allegiances.push(house) });
+          this.WebService.getDetailsFromUrl(house).subscribe((house: House) => { this.allegiances.push(house) });
         });
         this.character.books.forEach(book => {
-          this.WebService.getDetailsFromUrl(book).subscribe((book: any) => { if(book) this.books.push(book) });
+          this.WebService.getDetailsFromUrl(book).subscribe((book: Book) => { this.books.push(book) });
         });
         this.character.povBooks.forEach(book => {
-          this.WebService.getDetailsFromUrl(book).subscribe((book: any) => { if(book) this.povBooks.push(book) });
+          this.WebService.getDetailsFromUrl(book).subscribe((book: Book) => { this.povBooks.push(book) });
         });
       });
     });

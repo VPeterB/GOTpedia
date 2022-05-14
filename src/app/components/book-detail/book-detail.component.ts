@@ -25,14 +25,14 @@ export class BookDetailComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
       this.url = this.idService.getBookUrl(params["id"]);
-      this.WebService.getDetailsFromUrl(this.url).subscribe((book: any) => { this.book = book;
+      this.WebService.getDetailsFromUrl(this.url).subscribe((book: Book) => { this.book = book;
         this.characters = [];
         this.povCharacters = [];
         this.book.characters.forEach(character => {
-          this.WebService.getDetailsFromUrl(character).subscribe((character: any) => { if(character) this.characters.push(character) });
+          this.WebService.getDetailsFromUrl(character).subscribe((character: Character) => { this.characters.push(character) });
         });
         this.book.povCharacters.forEach(character => {
-          this.WebService.getDetailsFromUrl(character).subscribe((character: any) => { if(character) this.povCharacters.push(character) });
+          this.WebService.getDetailsFromUrl(character).subscribe((character: Character) => { this.povCharacters.push(character) });
         });
       });
     });
