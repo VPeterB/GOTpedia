@@ -1,29 +1,29 @@
 <div class="list-group" *ngIf="book">
-  <a class="list-group-item list-group-item-action">
+  <li class="list-group-item">
     Name: {{ book.name }}
-  </a>
-  <a class="list-group-item list-group-item-action">
+  </li>
+  <li class="list-group-item">
     ISBN: {{ book.isbn }}
-  </a>
-  <a class="list-group-item list-group-item-action">
+  </li>
+  <li class="list-group-item">
     Authors: {{ book.authors }}
-  </a>
-  <a class="list-group-item list-group-item-action">
+  </li>
+  <li class="list-group-item">
     Number of pages: {{ book.numberOfPages }}
-  </a>
-  <a class="list-group-item list-group-item-action">
+  </li>
+  <li class="list-group-item">
     Publisher: {{ book.publiser }}
-  </a>
-  <a class="list-group-item list-group-item-action">
+  </li>
+  <li class="list-group-item">
     Country: {{ book.country }}
-  </a>
-  <a class="list-group-item list-group-item-action">
+  </li>
+  <li class="list-group-item">
     Media type: {{ book.mediaType }}
-  </a>
-  <a class="list-group-item list-group-item-action">
+  </li>
+  <li class="list-group-item">
     Released: {{ book.released | date:'mediumDate' }}
-  </a>
-  <a class="list-group-item list-group-item-action">
+  </li>
+  <li class="list-group-item">
     Characters:
     <a *ngFor="let character of characters" [routerLink]="['/character/' + idService.getCharacterId(character.url)]" class="btn btn-outline-secondary">
       <p *ngIf="character.name == ''">
@@ -33,11 +33,11 @@
         {{ character.name }}
       </p>
     </a>
-  </a>
-  <a class="list-group-item list-group-item-action ">
+  </li>
+  <li class="list-group-item">
     POV characters:
     <a *ngFor="let character of povCharacters" [routerLink]="['/character/' + idService.getCharacterId(character.url)]" class="btn btn-outline-secondary">
       {{ character.name }}
     </a>
-  </a>
+  </li>
 </div>

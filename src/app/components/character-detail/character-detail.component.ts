@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Character} from "../../models/character.model";
 import {House} from "../../models/house.model";
 import {Book} from "../../models/book.model";
@@ -14,9 +14,9 @@ import {IdService} from "../../services/id.service";
 export class CharacterDetailComponent implements OnInit {
   url: string;
   character: Character;
-  father: Character;
-  mother: Character;
-  spouse: Character;
+  father: Character | undefined;
+  mother: Character | undefined;
+  spouse: Character | undefined;
   allegiances: House[];
   books: Book[];
   povBooks: Book[];
@@ -31,6 +31,9 @@ export class CharacterDetailComponent implements OnInit {
     this.route.params.subscribe((params: Params) => {
       this.url = this.idService.getCharacterUrl(params["id"]);
       this.WebService.getDetailsFromUrl(this.url).subscribe((character: any) => { this.character = character;
+        this.father = undefined;
+        this.mother = undefined;
+        this.spouse = undefined;
         if(this.character.father) this.WebService.getDetailsFromUrl(this.character.father).subscribe((character: any) => { if(character) this.father = character });
         if(this.character.mother) this.WebService.getDetailsFromUrl(this.character.mother).subscribe((character: any) => { if(character) this.mother = character });
         if(this.character.spouse) this.WebService.getDetailsFromUrl(this.character.spouse).subscribe((character: any) => { if(character) this.spouse = character });

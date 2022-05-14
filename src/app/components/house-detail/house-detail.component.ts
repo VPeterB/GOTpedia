@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from "@angular/router";
 import {HttpServiceService} from "../../services/http-service.service";
 import {House} from "../../models/house.model";
@@ -14,10 +14,10 @@ import {Observable} from "rxjs";
 export class HouseDetailComponent implements OnInit {
   url: string;
   house: House;
-  currentLord: Character;
-  heir: Character;
-  overlord: House;
-  founder: Character;
+  currentLord: Character | undefined;
+  heir: Character | undefined;
+  overlord: House | undefined;
+  founder: Character | undefined;
   cadetBranches: House[];
   swornMembers: Character[];
 
@@ -31,6 +31,10 @@ export class HouseDetailComponent implements OnInit {
     this.route.params.subscribe((params: Params) => {
         this.url = this.idService.getHouseUrl(params["id"]);
         this.WebService.getDetailsFromUrl(this.url).subscribe((house: any) => { this.house = house;
+          this.currentLord = undefined;
+          this.heir = undefined;
+          this.overlord = undefined;
+          this.founder = undefined;
           if(this.house.currentLord) this.WebService.getDetailsFromUrl(this.house.currentLord).subscribe((character: any) => { if(character) this.currentLord = character });
           if(this.house.heir) this.WebService.getDetailsFromUrl(this.house.heir).subscribe((character: any) => { if(character) this.heir = character });
           if(this.house.overlord) this.WebService.getDetailsFromUrl(this.house.overlord).subscribe((house: any) => { if(house) this.overlord = house });
