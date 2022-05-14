@@ -11,7 +11,7 @@ const path = require('path');
 const app = express();
 app.use(requireHTTPS);
 app.use(express.static(__dirname + '/dist/HF'));
-app.get('/*', function(req, res) {
+app.get('*', function(req, res) {
   res.sendFile(path.join(__dirname+'/dist/HF/index.html'));
 });
 
