@@ -12,7 +12,7 @@
       <p *ngIf="character.culture == ''" class="card-text">
         Culture: unknown
       </p>
-      <a [routerLink]="['/character/' + idService.getCharacterId(character.url)]" class="btn btn-outline-secondary">Details</a>
+      <a [routerLink]="['/character/' + idService.getId(character.url)]" class="btn btn-outline-secondary">Details</a>
     </div>
   </div>
 </div>

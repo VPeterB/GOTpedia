@@ -9,7 +9,7 @@
       <p class="card-text">
         Region: {{ house.region }}
       </p>
-      <a [routerLink]="['/house/' + idService.getHouseId(house.url)]" class="btn btn-outline-secondary">Details</a>
+      <a [routerLink]="['/house/' + idService.getId(house.url)]" class="btn btn-outline-secondary">Details</a>
     </div>
   </div>
 </div>

@@ -25,7 +25,7 @@
   </li>
   <li class="list-group-item">
     Characters:
-    <a *ngFor="let character of characters" [routerLink]="['/character/' + idService.getCharacterId(character.url)]" class="btn btn-outline-secondary">
+    <a *ngFor="let character of characters" [routerLink]="['/character/' + idService.getId(character.url)]" class="btn btn-outline-secondary">
       <p *ngIf="character.name == ''">
         "anonym"
       </p>
@@ -36,7 +36,7 @@
   </li>
   <li class="list-group-item">
     POV characters:
-    <a *ngFor="let character of povCharacters" [routerLink]="['/character/' + idService.getCharacterId(character.url)]" class="btn btn-outline-secondary">
+    <a *ngFor="let character of povCharacters" [routerLink]="['/character/' + idService.getId(character.url)]" class="btn btn-outline-secondary">
       {{ character.name }}
     </a>
   </li>

@@ -8,7 +8,7 @@
       <p class="card-text">
         Pages: {{ book.numberOfPages }}
       </p>
-      <a [routerLink]="['/book/' + idService.getBookId(book.url)]" class="btn btn-outline-secondary">Details</a>
+      <a [routerLink]="['/book/' + idService.getId(book.url)]" class="btn btn-outline-secondary">Details</a>
     </div>
   </div>
 </div>

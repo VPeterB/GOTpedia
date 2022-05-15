@@ -27,37 +27,37 @@
   </li>
   <li class="list-group-item">
     Father:
-    <a *ngIf="father" [routerLink]="['/character/' + idService.getCharacterId(character.father)]" class="btn btn-outline-secondary">
+    <a *ngIf="father" [routerLink]="['/character/' + idService.getId(character.father)]" class="btn btn-outline-secondary">
       {{ father.name }}
     </a>
   </li>
   <li class="list-group-item">
    Mother:
-    <a *ngIf="mother" [routerLink]="['/character/' + idService.getCharacterId(character.mother)]" class="btn btn-outline-secondary">
+    <a *ngIf="mother" [routerLink]="['/character/' + idService.getId(character.mother)]" class="btn btn-outline-secondary">
       {{ mother.name }}
     </a>
   </li>
   <li class="list-group-item">
     Spouse:
-    <a *ngIf="spouse" [routerLink]="['/character/' + idService.getCharacterId(character.spouse)]" class="btn btn-outline-secondary">
+    <a *ngIf="spouse" [routerLink]="['/character/' + idService.getId(character.spouse)]" class="btn btn-outline-secondary">
       {{ spouse.name }}
     </a>
   </li>
   <li class="list-group-item">
     Allegiances:
-    <a *ngFor="let house of allegiances" [routerLink]="['/house/' + idService.getHouseId(house.url)]" class="btn btn-outline-secondary">
+    <a *ngFor="let house of allegiances" [routerLink]="['/house/' + idService.getId(house.url)]" class="btn btn-outline-secondary">
       {{ house.name }}
     </a>
   </li>
   <li class="list-group-item">
     Books:
-    <a *ngFor="let book of books" [routerLink]="['/book/' + idService.getBookId(book.url)]" class="btn btn-outline-secondary">
+    <a *ngFor="let book of books" [routerLink]="['/book/' + idService.getId(book.url)]" class="btn btn-outline-secondary">
       {{ book.name }}
     </a>
   </li>
   <li class="list-group-item">
     POV books:
-    <a *ngFor="let book of povBooks" [routerLink]="['/book/' + idService.getBookId(book.url)]" class="btn btn-outline-secondary">
+    <a *ngFor="let book of povBooks" [routerLink]="['/book/' + idService.getId(book.url)]" class="btn btn-outline-secondary">
       {{ book.name }}
     </a>
   </li>

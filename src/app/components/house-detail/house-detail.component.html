@@ -19,19 +19,19 @@
   </li>
   <li class="list-group-item">
     Current lord:
-    <a *ngIf="currentLord" [routerLink]="['/character/' + idService.getCharacterId(house.currentLord)]" class="btn btn-outline-secondary">
+    <a *ngIf="currentLord" [routerLink]="['/character/' + idService.getId(house.currentLord)]" class="btn btn-outline-secondary">
       {{ currentLord.name }}
     </a>
   </li>
   <li class="list-group-item">
     Heir:
-    <a *ngIf="heir" [routerLink]="['/character/' + idService.getCharacterId(house.heir)]" class="btn btn-outline-secondary">
+    <a *ngIf="heir" [routerLink]="['/character/' + idService.getId(house.heir)]" class="btn btn-outline-secondary">
       {{ heir.name }}
     </a>
   </li>
   <li class="list-group-item">
     Overlord:
-    <a *ngIf="overlord" [routerLink]="['/house/' + idService.getHouseId(house.overlord)]" class="btn btn-outline-secondary">
+    <a *ngIf="overlord" [routerLink]="['/house/' + idService.getId(house.overlord)]" class="btn btn-outline-secondary">
       {{ overlord.name }}
     </a>
   </li>
@@ -40,7 +40,7 @@
   </li>
   <li class="list-group-item">
     Founder:
-    <a *ngIf="founder" [routerLink]="['/character/' + idService.getCharacterId(house.founder)]" class="btn btn-outline-secondary">
+    <a *ngIf="founder" [routerLink]="['/character/' + idService.getId(house.founder)]" class="btn btn-outline-secondary">
       {{ founder.name }}
     </a>
   </li>
@@ -52,13 +52,13 @@
   </li>
   <li class="list-group-item">
     Cadet branches:
-    <a *ngFor="let branch of cadetBranches" [routerLink]="['/house/' + idService.getHouseId(branch.url)]" class="btn btn-outline-secondary">
+    <a *ngFor="let branch of cadetBranches" [routerLink]="['/house/' + idService.getId(branch.url)]" class="btn btn-outline-secondary">
       {{ branch.name }}
     </a>
   </li>
   <li class="list-group-item">
     Sworn members:
-    <a *ngFor="let member of swornMembers" [routerLink]="['/character/' + idService.getCharacterId(member.url)]" class="btn btn-outline-secondary">
+    <a *ngFor="let member of swornMembers" [routerLink]="['/character/' + idService.getId(member.url)]" class="btn btn-outline-secondary">
       <p *ngIf="member.name == ''">
         "anonym"
       </p>

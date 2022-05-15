@@ -8,26 +8,11 @@ export class IdService {
   constructor() { }
 
   /**
-   * return house id from url
+   * return id from url, url looks like for example: https://anapioficeandfire.com/api/{type}/1 or https://www.anapioficeandfire.com/api/{type}/1
+   * split picks the number after 5 separator "/"
    * @param url
    */
-  getHouseId(url: string){
-    return url.split("/")[5];
-  }
-
-  /**
-   * return character id from url
-   * @param url
-   */
-  getCharacterId(url: string){
-    return url.split("/")[5];
-  }
-
-  /**
-   * return book id from url
-   * @param url
-   */
-  getBookId(url: string){
+  getId(url: string){
     return url.split("/")[5];
   }
 
