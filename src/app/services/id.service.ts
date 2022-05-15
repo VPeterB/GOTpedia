@@ -8,7 +8,8 @@ export class IdService {
   constructor() { }
 
   /**
-   * return id from url, url looks like for example: https://anapioficeandfire.com/api/{type}/1 or https://www.anapioficeandfire.com/api/{type}/1
+   * return id from url, url looks like: "https://anapioficeandfire.com/api/{type}/1" or "https://www.anapioficeandfire.com/api/{type}/1"
+   * where {type} can be houses, books or characters
    * split picks the number after 5 separator "/"
    * @param url
    */
