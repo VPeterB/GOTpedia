@@ -12,7 +12,7 @@ export class IdService {
    * @param url
    */
   getHouseId(url: string){
-    return url.split("https://www.anapioficeandfire.com/api/houses/")[1];
+    return url.split("/")[5];
   }
 
   /**
@@ -20,7 +20,7 @@ export class IdService {
    * @param url
    */
   getCharacterId(url: string){
-    return url.split("https://www.anapioficeandfire.com/api/characters/")[1];
+    return url.split("/")[5];
   }
 
   /**
@@ -28,7 +28,7 @@ export class IdService {
    * @param url
    */
   getBookId(url: string){
-    return url.split("https://www.anapioficeandfire.com/api/books/")[1];
+    return url.split("/")[5];
   }
 
   /**

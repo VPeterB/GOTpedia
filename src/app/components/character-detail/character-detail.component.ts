@@ -62,7 +62,9 @@ export class CharacterDetailComponent implements OnInit {
     this.WebService.getDetailsFromUrl(this.url).subscribe((character: Character) => { this.character = character;
       if(this.character.father) this.WebService.getDetailsFromUrl(this.character.father).subscribe((character: Character) => { this.father = character });
       if(this.character.mother) this.WebService.getDetailsFromUrl(this.character.mother).subscribe((character: Character) => { this.mother = character });
-      if(this.character.spouse) this.WebService.getDetailsFromUrl(this.character.spouse).subscribe((character: Character) => { this.spouse = character });
+      console.log(this.character.spouse)
+      if(this.character.spouse) this.WebService.getDetailsFromUrl(this.character.spouse).subscribe((character: Character) => { this.spouse = character; console.log(this.spouse?.url) });
+      console.log(this.character.spouse)
       this.character.allegiances.forEach(house => {
         this.WebService.getDetailsFromUrl(house).subscribe((house: House) => { this.allegiances.push(house) });
       });
